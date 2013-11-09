@@ -7,6 +7,7 @@ using System.Drawing;
 using Gwen.Control;
 using System.Diagnostics;
 using Lidgren.Network;
+using Lidgren.Messages;
 
 namespace Xanatos
 {
@@ -27,6 +28,7 @@ namespace Xanatos
 			GraphicsManager.SetBackground(Color.Black);
 
 			GraphicsManager.Update += GraphicsManager_Update;
+			GraphicsManager.Update += Message.Update;
 
 			//Draw2D
 			Camera2D = new Camera2D();
@@ -38,10 +40,10 @@ namespace Xanatos
 
 		private static void Initialize()
 		{
+			ScriptManager.Initialize();
 			SwitchState(new GameState.MainMenu());
 			DrawTime.Start();
 			UpdateTime.Start();
-			
 		}
 
 		internal static void SwitchState(IGameState newstate)

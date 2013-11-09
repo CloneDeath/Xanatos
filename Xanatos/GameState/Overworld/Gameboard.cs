@@ -8,21 +8,27 @@ using System.Drawing;
 
 namespace Xanatos.GameState.Overworld
 {
-	class Gameboard
+	public class Gameboard
 	{
-		List<Entity> Pieces = new List<Entity>();
+		List<Piece> Pieces = new List<Piece>();
 
 		public int Width;
 		public int Height;
-		public Gameboard(int width, int height)
+
+		public void SetSize(int width, int height)
 		{
 			this.Width = width;
 			this.Height = height;
 		}
 
-		public void Add(Entity entity)
+		public Gameboard()
 		{
-			Pieces.Add(entity);
+			this.SetSize(1, 2);
+		}
+
+		public void Add(int PlayerID, Entity entity, int X, int Y)
+		{
+			Pieces.Add(new Piece(PlayerID, entity, X, Y));
 		}
 
 		internal void Draw()
@@ -36,7 +42,7 @@ namespace Xanatos.GameState.Overworld
 				GraphicsManager.DrawLine(new Vector3d(0, i, 0.01), new Vector3d(Width, i, 0.01), Color.Black);
 			}
 
-			foreach (Entity piece in Pieces) {
+			foreach (Piece piece in Pieces) {
 				piece.Draw();
 			}
 		}

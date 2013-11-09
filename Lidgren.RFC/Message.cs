@@ -34,6 +34,13 @@ namespace Lidgren.Messages
 			Connection = client;
 		}
 
+		public static void WaitForConnection()
+		{
+			while (Connection.Status != NetPeerStatus.Running) {
+				Update();
+			}
+		}
+
 		#region Reply
 		public void Reply(NetDeliveryMethod method)
 		{
@@ -76,7 +83,7 @@ namespace Lidgren.Messages
 		private void Send(NetPeer peer, NetConnection destination, NetDeliveryMethod method)
 		{
 			NetOutgoingMessage nom = peer.CreateMessage(InitialMessageSize());
-			nom.Write(this.GetType().Name);
+			nom.Write(this.GetType().FullName);
 			this.WriteData(nom);
 			peer.SendMessage(nom, destination, method);
 		}
@@ -126,14 +133,17 @@ namespace Lidgren.Messages
 
 		static List<NetIncomingMessage> Messages = new List<NetIncomingMessage>();
 		static Stopwatch timeout = new Stopwatch();
-		public static void Update(int TimeoutMilliseconds = 100)
+		public static int TimeoutMilliseconds = 100;
+		public static void Update()
 		{
 			timeout.Restart();
 			if (Connection != null) {
 				Connection.ReadMessages(Messages);
 				while (Messages.Count != 0 && timeout.ElapsedMilliseconds < TimeoutMilliseconds) {
-					Message.Handle(Messages[0]);
+					NetIncomingMessage msg = Messages[0];
 					Messages.RemoveAt(0);
+
+					Message.Handle(msg);
 				}
 			}
 		}

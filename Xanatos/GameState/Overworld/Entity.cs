@@ -2,20 +2,37 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using GLImp;
+using OpenTK;
+using System.IO;
 
 namespace Xanatos.GameState.Overworld
 {
-	abstract class Entity
+	public abstract class Entity
 	{
-		public int X;
-		public int Y;
+		public static Dictionary<string, Entity> Entities = new Dictionary<string, Entity>();
 
-		public Entity(int x, int y)
+		public string Image
 		{
-			this.X = x;
-			this.Y = y;
+			get
+			{
+				return WorldTexture.Location;
+			}
+			set
+			{
+				WorldTexture = new Texture(Path.Combine(ScriptManager.CurrentDirectory, value), false);
+			}
 		}
 
-		public abstract void Draw();
+		Texture WorldTexture;
+		public virtual void Draw(int X, int Y)
+		{
+			GraphicsManager.DrawQuad(
+				new Vector3d(X, Y + 0.5, 1), 
+				new Vector3d(X + 1, Y + 0.5, 1), 
+				new Vector3d(X + 1, Y + 0.5, 0), 
+				new Vector3d(X, Y + 0.5, 0),
+			WorldTexture);
+		}
 	}
 }

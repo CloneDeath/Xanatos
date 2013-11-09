@@ -15,7 +15,6 @@ namespace Xanatos.GameState
 	class Game : IGameState
 	{
 		Camera3D Gameview;
-		Gameboard Battlefield;
 
 		public void Initialize()
 		{
@@ -40,9 +39,7 @@ namespace Xanatos.GameState
 			Gameview.EnableViewport(10, 10, GraphicsManager.WindowWidth / 2, GraphicsManager.WindowHeight / 2);
 			Gameview.OnRender += GameRender;
 
-			Battlefield = new Gameboard(5, 7);
-			Battlefield.Add(new City(2, 1));
-			Battlefield.Add(new City(2, 5));
+			Console.WriteLine(GameInfo.Player.ID);
 		}
 
 		public void Uninitialize()
@@ -53,7 +50,7 @@ namespace Xanatos.GameState
 		public void GameRender()
 		{
 			/* Terrain */
-			Battlefield.Draw();
+			GameInfo.Battlefield.Draw();
 
 			/* Lookat */
 			Vector2d mousepos;

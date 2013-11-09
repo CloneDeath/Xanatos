@@ -5,6 +5,7 @@ using System.Text;
 using Gwen.Control;
 using Lidgren.Network;
 using Lidgren.Messages;
+using Xanatos.Networking.Initialization;
 
 namespace Xanatos.GameState
 {
@@ -31,6 +32,7 @@ namespace Xanatos.GameState
 			Program.Connection = new NetServer(Configuration);
 			Program.Connection.Start();
 			Message.RegisterServer(Program.Connection);
+			GameInfo.Player.ID = 0;
 		}
 
 		public void Uninitialize()
@@ -44,9 +46,6 @@ namespace Xanatos.GameState
 
 		public void Update(float dt)
 		{
-			if (Program.Connection.Connections.Count != 0) {
-				Program.SwitchState(new Game());
-			}
 		}
 	}
 }

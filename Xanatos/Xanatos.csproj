@@ -102,18 +102,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AABBCollision.cs" />
-    <Compile Include="GameState\Connect.cs" />
-    <Compile Include="GameState\Overworld\Entities\City.cs" />
+    <Compile Include="GameState\Overworld\Entities\Building.cs" />
+    <Compile Include="GameState\Overworld\GameInfo.cs" />
+    <Compile Include="GameState\Initialization\Connect.cs" />
     <Compile Include="GameState\Overworld\Entity.cs" />
     <Compile Include="GameState\Overworld\Game.cs" />
-    <Compile Include="GameState\Hosting.cs" />
+    <Compile Include="GameState\Initialization\Hosting.cs" />
     <Compile Include="GameState\Overworld\Gameboard.cs" />
+    <Compile Include="GameState\Overworld\Piece.cs" />
     <Compile Include="IGameState.cs" />
-    <Compile Include="GameState\MainMenu.cs" />
+    <Compile Include="GameState\Initialization\MainMenu.cs" />
     <Compile Include="MainCanvas.cs" />
     <Compile Include="MouseMonitor.cs" />
+    <Compile Include="Networking\Initialization\PlayerAssignment.cs" />
+    <Compile Include="GameState\Overworld\Player.cs" />
+    <Compile Include="Networking\Initialization\PlayerJoining.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripting\IronGame.cs" />
+    <Compile Include="ScriptManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lidgren.RFC\Lidgren.Messages.csproj">
@@ -121,19 +128,14 @@
       <Name>Lidgren.Messages</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Data\DefaultSkin.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Data\City.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>REM xcopy /E /C /Y "$(ProjectDir)Data\*.*" "$(TargetDir)Data\"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>xcopy /E /C /Y "$(SolutionDir)Data\*.*" "$(TargetDir)Data\"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

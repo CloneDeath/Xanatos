@@ -11,6 +11,7 @@ namespace Lidgren.Messages
 	{
 		public static void Handle(NetIncomingMessage Message)
 		{
+			Console.WriteLine(Message.MessageType);
 			if (Message.MessageType == NetIncomingMessageType.Data) {
 				List<Type> types = FindDerivedTypes();
 				Type Match = GetMatch(types, Message.ReadString());
@@ -31,7 +32,7 @@ namespace Lidgren.Messages
 		private static Type GetMatch(List<Type> types, string name)
 		{
 			foreach (Type t in types) {
-				if (t.Name == name) {
+				if (t.FullName == name) {
 					return t;
 				}
 			}

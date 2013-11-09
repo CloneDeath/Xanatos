@@ -6,6 +6,7 @@ using Gwen.Control;
 using Lidgren.Network;
 using System.Threading;
 using Lidgren.Messages;
+using Xanatos.Networking.Initialization;
 
 namespace Xanatos.GameState
 {
@@ -36,11 +37,9 @@ namespace Xanatos.GameState
 					Thread.Sleep(500);
 					Program.Connection.ReadMessages(new List<NetIncomingMessage>());
 				}
-				Console.WriteLine("Connected!");
-
 				Message.RegisterClient(Program.Connection);
 
-				Program.SwitchState(new Game());
+				new PlayerJoining().Send();
 			};
 		}
 
