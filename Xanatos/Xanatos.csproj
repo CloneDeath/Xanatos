@@ -111,6 +111,8 @@
     <Compile Include="GameState\Initialization\Hosting.cs" />
     <Compile Include="GameState\Overworld\Gameboard.cs" />
     <Compile Include="GameState\Overworld\Piece.cs" />
+    <Compile Include="GameState\Overworld\Resource.cs" />
+    <Compile Include="GameState\Overworld\ResourceManager.cs" />
     <Compile Include="GameState\Overworld\TextureManager.cs" />
     <Compile Include="IGameState.cs" />
     <Compile Include="GameState\Initialization\MainMenu.cs" />
@@ -123,6 +125,7 @@
     <Compile Include="Networking\Initialization\PlayerAssignment.cs" />
     <Compile Include="GameState\Overworld\Player.cs" />
     <Compile Include="Networking\Initialization\PlayerJoining.cs" />
+    <Compile Include="Networking\Resource\Add.cs" />
     <Compile Include="Networking\Texture\Add.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -131,9 +134,11 @@
     <Compile Include="Scripting\IronGame.cs" />
     <Compile Include="Scripting\IronGameboard.cs" />
     <Compile Include="Networking\Battlefield\SetSize.cs" />
+    <Compile Include="Scripting\IronResource.cs" />
     <Compile Include="Scripting\IronTexture.cs" />
     <Compile Include="Networking\Texture\Load.cs" />
     <Compile Include="Networking\Entity\SetWorldTexture.cs" />
+    <Compile Include="Networking\Resource\SetResourceIcon.cs" />
     <Compile Include="ScriptManager.cs" />
   </ItemGroup>
   <ItemGroup>

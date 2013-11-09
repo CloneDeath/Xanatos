@@ -62,8 +62,13 @@ namespace Xanatos.GameState
 				GraphicsManager.DrawLine(new Vector3d(mousepos.X, mousepos.Y, 0), new Vector3d(mousepos.X, mousepos.Y, 1), Color.White);
 			}
 
-			Gameview.Position = new Vector3d(2.5, -0.5, 4);
-			Gameview.LookAt(2.5, 2.5, 0);
+			if (GameInfo.Player.ID == 0) {
+				Gameview.Position = new Vector3d(2.5, -0.5, 4);
+				Gameview.LookAt(2.5, 2.5, 0);
+			} else {
+				Gameview.Position = new Vector3d(2.5, 7.5, 4);
+				Gameview.LookAt(2.5, 4.5, 0);
+			}
 		}
 
 		public void Draw2D(float dt)

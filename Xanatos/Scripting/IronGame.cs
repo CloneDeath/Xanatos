@@ -39,6 +39,7 @@ namespace Xanatos.Scripting
 				return TextureManager.Textures;
 			}
 		}
+
 		public static IronTexture GetTexture(string name)
 		{
 			if (Textures.ContainsKey(name)) {
@@ -56,6 +57,25 @@ namespace Xanatos.Scripting
 			get
 			{
 				return new IronGameboard();
+			}
+		}
+
+		private static Dictionary<string, Resource> Resources
+		{
+			get
+			{
+				return ResourceManager.Resources;
+			}
+		}
+		public static IronResource GetResource(string name)
+		{
+			if (Resources.ContainsKey(name)) {
+				return new IronResource(Resources[name]);
+			} else {
+				Resource res = new Resource(name);
+				Resources[name] = res;
+				new Networking.Resource.Add(name).Send();
+				return new IronResource(res);
 			}
 		}
 	}
