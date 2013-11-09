@@ -8,6 +8,6 @@ namespace Xanatos.GameState.Overworld.Entities
 {
 	public class Building : Entity
 	{
-		
+		public Building(string Name) : base(Name) { }
 	}
 }

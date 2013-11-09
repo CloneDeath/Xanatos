@@ -94,6 +94,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -110,25 +111,37 @@
     <Compile Include="GameState\Initialization\Hosting.cs" />
     <Compile Include="GameState\Overworld\Gameboard.cs" />
     <Compile Include="GameState\Overworld\Piece.cs" />
+    <Compile Include="GameState\Overworld\TextureManager.cs" />
     <Compile Include="IGameState.cs" />
     <Compile Include="GameState\Initialization\MainMenu.cs" />
     <Compile Include="MainCanvas.cs" />
+    <Compile Include="Math\Vector2i.cs" />
+    <Compile Include="Math\Vector3i.cs" />
     <Compile Include="MouseMonitor.cs" />
+    <Compile Include="Networking\Battlefield\AddPiece.cs" />
+    <Compile Include="Networking\Entity\AddBuilding.cs" />
     <Compile Include="Networking\Initialization\PlayerAssignment.cs" />
     <Compile Include="GameState\Overworld\Player.cs" />
     <Compile Include="Networking\Initialization\PlayerJoining.cs" />
+    <Compile Include="Networking\Texture\Add.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripting\IronBuilding.cs" />
+    <Compile Include="Scripting\IronEntity.cs" />
     <Compile Include="Scripting\IronGame.cs" />
+    <Compile Include="Scripting\IronGameboard.cs" />
+    <Compile Include="Networking\Battlefield\SetSize.cs" />
+    <Compile Include="Scripting\IronTexture.cs" />
+    <Compile Include="Networking\Texture\Load.cs" />
+    <Compile Include="Networking\Entity\SetWorldTexture.cs" />
     <Compile Include="ScriptManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Lidgren.RFC\Lidgren.Messages.csproj">
+    <ProjectReference Include="..\Lidgren.Messages\Lidgren.Messages.csproj">
       <Project>{9B6866A3-ED4D-496C-8DC5-7F9DB1519CF1}</Project>
       <Name>Lidgren.Messages</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

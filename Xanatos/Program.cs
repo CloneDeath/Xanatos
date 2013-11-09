@@ -40,7 +40,6 @@ namespace Xanatos
 
 		private static void Initialize()
 		{
-			ScriptManager.Initialize();
 			SwitchState(new GameState.MainMenu());
 			DrawTime.Start();
 			UpdateTime.Start();

@@ -64,10 +64,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HostType.cs" />
+    <Compile Include="ISerializer.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="MessageHandler.cs" />
+    <Compile Include="MessageSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeSerializer\BooleanSerializer.cs" />
+    <Compile Include="TypeSerializer\ByteArraySerializer.cs" />
+    <Compile Include="TypeSerializer\ByteSerializer.cs" />
+    <Compile Include="TypeSerializer\DoubleSerializer.cs" />
+    <Compile Include="TypeSerializer\IPEndPointSerializer.cs" />
+    <Compile Include="TypeSerializer\SByteSerializer.cs" />
+    <Compile Include="TypeSerializer\SingleSerializer.cs" />
+    <Compile Include="TypeSerializer\StringSerializer.cs" />
+    <Compile Include="TypeSerializer\UInt16Serializer.cs" />
+    <Compile Include="TypeSerializer\UInt32Serializer.cs" />
+    <Compile Include="TypeSerializer\UInt64Serializer.cs" />
+    <Compile Include="TypeSerializer\Int64Serializer.cs" />
+    <Compile Include="TypeSerializer\Int16Serializer.cs" />
+    <Compile Include="TypeSerializer\Int32Serializer.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

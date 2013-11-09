@@ -59,7 +59,12 @@ namespace Lidgren.Messages
 		#region Send
 		public void Send()
 		{
-			this.Send(Connection, Connection.Connections, NetDeliveryMethod.ReliableUnordered);
+			this.Send(NetDeliveryMethod.ReliableOrdered);
+		}
+
+		public void Send(NetDeliveryMethod method)
+		{
+			this.Send(Connection, Connection.Connections, method);
 		}
 
 		private void Send(NetPeer peer, List<NetConnection> clients, NetDeliveryMethod method)
@@ -71,7 +76,7 @@ namespace Lidgren.Messages
 
 		private void Send(NetConnection destination)
 		{
-			this.Send(Connection, destination, NetDeliveryMethod.ReliableUnordered);
+			this.Send(Connection, destination, NetDeliveryMethod.ReliableOrdered);
 		}
 		#endregion
 
@@ -123,12 +128,12 @@ namespace Lidgren.Messages
 
 		private void WriteData(NetOutgoingMessage Message)
 		{
-			Message.WriteAllFields(this, AllFlags);
+			MessageSerializer.Write(this, AllFlags, Message);
 		}
 
 		private void ReadData(NetIncomingMessage Message)
 		{
-			Message.ReadAllFields(this, AllFlags);
+			MessageSerializer.Read(this, AllFlags, Message);
 		}
 
 		static List<NetIncomingMessage> Messages = new List<NetIncomingMessage>();

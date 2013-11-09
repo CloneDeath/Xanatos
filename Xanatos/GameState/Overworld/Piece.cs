@@ -7,22 +7,21 @@ namespace Xanatos.GameState.Overworld
 {
 	class Piece
 	{
-		public int X;
-		public int Y;
+		Vector2i Location;
+
 		public Entity Instance;
 		public int PlayerID;
 
-		public Piece(int playerid, Entity instance, int x, int y)
+		public Piece(int playerid, Entity instance, Vector2i location)
 		{
-			this.X = x;
-			this.Y = y;
+			this.Location = location;
 			this.Instance = instance;
 			this.PlayerID = playerid;
 		}
 
 		public void Draw()
 		{
-			Instance.Draw(X, Y);
+			Instance.Draw(Location);
 		}
 	}
 }

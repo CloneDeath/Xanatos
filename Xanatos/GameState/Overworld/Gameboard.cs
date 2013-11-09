@@ -26,9 +26,9 @@ namespace Xanatos.GameState.Overworld
 			this.SetSize(1, 2);
 		}
 
-		public void Add(int PlayerID, Entity entity, int X, int Y)
+		public void Add(int PlayerID, Entity entity, Vector2i Location)
 		{
-			Pieces.Add(new Piece(PlayerID, entity, X, Y));
+			Pieces.Add(new Piece(PlayerID, entity, Location));
 		}
 
 		internal void Draw()

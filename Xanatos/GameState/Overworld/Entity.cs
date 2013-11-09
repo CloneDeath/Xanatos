@@ -12,26 +12,20 @@ namespace Xanatos.GameState.Overworld
 	{
 		public static Dictionary<string, Entity> Entities = new Dictionary<string, Entity>();
 
-		public string Image
+		public Entity(string Name)
 		{
-			get
-			{
-				return WorldTexture.Location;
-			}
-			set
-			{
-				WorldTexture = new Texture(Path.Combine(ScriptManager.CurrentDirectory, value), false);
-			}
+			this.Name = Name;
 		}
 
-		Texture WorldTexture;
-		public virtual void Draw(int X, int Y)
+		public Texture WorldTexture;
+		public string Name;
+		public virtual void Draw(Vector2i Location)
 		{
 			GraphicsManager.DrawQuad(
-				new Vector3d(X, Y + 0.5, 1), 
-				new Vector3d(X + 1, Y + 0.5, 1), 
-				new Vector3d(X + 1, Y + 0.5, 0), 
-				new Vector3d(X, Y + 0.5, 0),
+				new Vector3d(Location.X, Location.Y + 0.5, 1),
+				new Vector3d(Location.X + 1, Location.Y + 0.5, 1),
+				new Vector3d(Location.X + 1, Location.Y + 0.5, 0),
+				new Vector3d(Location.X, Location.Y + 0.5, 0),
 			WorldTexture);
 		}
 	}

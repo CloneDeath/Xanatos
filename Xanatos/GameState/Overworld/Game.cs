@@ -40,6 +40,10 @@ namespace Xanatos.GameState
 			Gameview.OnRender += GameRender;
 
 			Console.WriteLine(GameInfo.Player.ID);
+
+			if (GameInfo.Player.IsServer) {
+				ScriptManager.Initialize();
+			}
 		}
 
 		public void Uninitialize()
