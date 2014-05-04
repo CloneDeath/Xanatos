@@ -21,6 +21,7 @@ namespace Xanatos {
 		private static void CreateModuleFromClass(ScriptEngine engine, Type t, string ModuleName)
 		{
 			var Module = engine.CreateModule(ModuleName);
+			
 			foreach (MemberInfo m in t.GetMembers(BindingFlags.Public | BindingFlags.Static)){
 				
 				if (m.MemberType == MemberTypes.Method){
@@ -37,7 +38,8 @@ namespace Xanatos {
 
 				if (m.MemberType == MemberTypes.Field) {
 					FieldInfo field = (FieldInfo)m;
-					Module.SetVariable(field.Name, field.GetValue(null));
+					Module.SetVariable(field.Name, field.FieldHandle);
+					continue;
 				}
 
 				Console.WriteLine("Not supported: " + m.Name + " for module: " + ModuleName);
@@ -107,7 +109,9 @@ namespace Xanatos {
 		private static void LoadScript(string file)
 		{
 			ScriptScope scope = Engine.Runtime.CreateScope();
-			ScriptScope script = Engine.ExecuteFile(file, scope);
+			ScriptScope s = Engine.Execute("import clr; clr.AddReference('" + Environment.CurrentDirectory + "\\Xanatos.exe');");
+			ScriptScope script = Engine.ExecuteFile(file, s);
+			//ScriptScope script = Engine.ExecuteFile(file, scope);
 		}
 	}
 }

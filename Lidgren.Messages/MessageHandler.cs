@@ -11,7 +11,6 @@ namespace Lidgren.Messages
 	{
 		public static void Handle(NetIncomingMessage Message)
 		{
-			Console.WriteLine(Message.MessageType);
 			if (Message.MessageType == NetIncomingMessageType.Data) {
 				List<Type> types = FindDerivedTypes();
 				Type Match = GetMatch(types, Message.ReadString());
@@ -24,7 +23,6 @@ namespace Lidgren.Messages
 			if (Match.GetConstructor(new Type[0]) == null) {
 				throw new Exception("Message '" + Match.Name + "' Does not have an empty constructor!");
 			}
-			//Console.WriteLine("Received Message for '" + Match.Name + "'");
 			Message msg = (Message)Match.GetConstructor(new Type[0]).Invoke(new object[0]);
 			msg.Receive(Message);
 		}

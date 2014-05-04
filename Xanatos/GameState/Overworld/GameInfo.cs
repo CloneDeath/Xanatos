@@ -8,12 +8,19 @@ namespace Xanatos
 {
 	static class GameInfo
 	{
-		public static Player Player;
+		public static int MyPlayerID;
+		public static Dictionary<int, Player> Players = new Dictionary<int,Player>();
+		public static Player Me
+		{
+			get
+			{
+				return Players[MyPlayerID];
+			}
+		}
 		public static Gameboard Battlefield;
 
 		static GameInfo()
 		{
-			Player = new Player();
 			Battlefield = new Gameboard();
 		}
 	}

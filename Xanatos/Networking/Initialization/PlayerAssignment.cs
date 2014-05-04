@@ -20,7 +20,7 @@ namespace Xanatos.Networking.Initialization
 
 		protected override void ExecuteMessage()
 		{
-			GameInfo.Player.ID = PlayerID;
+			GameInfo.MyPlayerID = PlayerID;
 			Program.SwitchState(new Game());
 		}
 	}

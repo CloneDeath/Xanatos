@@ -1,8 +1,8 @@
 import Xanatos;
 
-PeasantTex = Xanatos.GetTexture("Peasant");
-PeasantTex.Load("Peasant.png");
+LumberjackTex = Xanatos.GetTexture("Lumberjack");
+LumberjackTex.Load("Lumberjack.png");
 
-Peasant = Xanatos.GetResource("Peasant");
-Peasant.Image = PeasantTex;
+Lumberjack = Xanatos.GetResource("Lumberjack");
+Lumberjack.Image = LumberjackTex;
 

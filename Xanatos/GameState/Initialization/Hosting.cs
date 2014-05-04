@@ -32,7 +32,6 @@ namespace Xanatos.GameState
 			Program.Connection = new NetServer(Configuration);
 			Program.Connection.Start();
 			Message.RegisterServer(Program.Connection);
-			GameInfo.Player.ID = 0;
 		}
 
 		public void Uninitialize()

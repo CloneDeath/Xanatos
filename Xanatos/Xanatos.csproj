@@ -125,6 +125,7 @@
     <Compile Include="Networking\Initialization\PlayerAssignment.cs" />
     <Compile Include="GameState\Overworld\Player.cs" />
     <Compile Include="Networking\Initialization\PlayerJoining.cs" />
+    <Compile Include="Networking\Player\Add.cs" />
     <Compile Include="Networking\Resource\Add.cs" />
     <Compile Include="Networking\Texture\Add.cs" />
     <Compile Include="Program.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="Scripting\IronGame.cs" />
     <Compile Include="Scripting\IronGameboard.cs" />
     <Compile Include="Networking\Battlefield\SetSize.cs" />
+    <Compile Include="Scripting\IronPlayer.cs" />
     <Compile Include="Scripting\IronResource.cs" />
     <Compile Include="Scripting\IronTexture.cs" />
     <Compile Include="Networking\Texture\Load.cs" />

@@ -11,6 +11,14 @@ namespace Xanatos.Networking.Initialization
 	{
 		protected override void ExecuteMessage()
 		{
+			GameInfo.Players[0] = new Xanatos.Player(0);
+			GameInfo.MyPlayerID = 0;
+			new Player.Add(0).Send();
+
+			GameInfo.Players[1] = new Xanatos.Player(1);
+			new Player.Add(1).Send();
+
+
 			new PlayerAssignment(1).Reply();
 			Program.SwitchState(new Game());
 		}

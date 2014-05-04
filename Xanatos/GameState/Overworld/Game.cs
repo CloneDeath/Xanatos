@@ -15,6 +15,9 @@ namespace Xanatos.GameState
 	class Game : IGameState
 	{
 		Camera3D Gameview;
+		WindowControl bottompanel;
+
+		public static event Action<Player> InitializePlayer;
 
 		public void Initialize()
 		{
@@ -27,7 +30,7 @@ namespace Xanatos.GameState
 			Base dummy = new Base(MainCanvas.Instance);
 			dummy.Dock = Gwen.Pos.Fill;
 
-			WindowControl bottompanel = new WindowControl(dummy);
+			bottompanel = new WindowControl(dummy);
 			bottompanel.Dock = Gwen.Pos.Bottom;
 			bottompanel.Height = (GraphicsManager.WindowHeight / 2) - 20;
 			bottompanel.IsClosable = false;
@@ -39,10 +42,11 @@ namespace Xanatos.GameState
 			Gameview.EnableViewport(10, 10, GraphicsManager.WindowWidth / 2, GraphicsManager.WindowHeight / 2);
 			Gameview.OnRender += GameRender;
 
-			Console.WriteLine(GameInfo.Player.ID);
-
-			if (GameInfo.Player.IsServer) {
+			if (GameInfo.Me.IsServer) {
 				ScriptManager.Initialize();
+				foreach (var p in GameInfo.Players.Values){
+					InitializePlayer(p);
+				}
 			}
 		}
 
@@ -62,7 +66,7 @@ namespace Xanatos.GameState
 				GraphicsManager.DrawLine(new Vector3d(mousepos.X, mousepos.Y, 0), new Vector3d(mousepos.X, mousepos.Y, 1), Color.White);
 			}
 
-			if (GameInfo.Player.ID == 0) {
+			if (GameInfo.Me.ID == 0) {
 				Gameview.Position = new Vector3d(2.5, -0.5, 4);
 				Gameview.LookAt(2.5, 2.5, 0);
 			} else {

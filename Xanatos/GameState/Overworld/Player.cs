@@ -8,6 +8,12 @@ namespace Xanatos
 	class Player
 	{
 		public int ID;
+		private int p;
+
+		public Player(int id)
+		{
+			this.ID = id;
+		}
 
 		public bool IsServer { get { return ID == 0; } }
 	}

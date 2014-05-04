@@ -5,11 +5,18 @@ using System.Text;
 using Xanatos.GameState.Overworld.Entities;
 using Xanatos.GameState.Overworld;
 using GLImp;
+using Xanatos.GameState;
+using IronPython.Runtime;
 
 namespace Xanatos.Scripting
 {
-	static class IronGame
+	public static class IronGame
 	{
+		static IronGame()
+		{
+			Game.InitializePlayer += PlayerInit;
+		}
+
 		private static Dictionary<string, Entity> Entities
 		{
 			get
@@ -76,6 +83,15 @@ namespace Xanatos.Scripting
 				Resources[name] = res;
 				new Networking.Resource.Add(name).Send();
 				return new IronResource(res);
+			}
+		}
+
+		public static Action<IronPlayer> OnPlayerInitialize;
+
+		internal static void PlayerInit(Player p)
+		{
+			if (OnPlayerInitialize != null) {
+				OnPlayerInitialize(new IronPlayer(p));
 			}
 		}
 	}
