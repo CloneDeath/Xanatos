@@ -41,9 +41,15 @@ namespace Xanatos.Editor
 			if (DataItems == null) {
 				DataGridBindingSource.DataSource = null;
 				dgvDataItems.Enabled = false;
+
+				btnAddDataItem.Enabled = false;
+				btnDeleteDataItem.Enabled = false;
 			} else {
 				DataGridBindingSource.DataSource = DataItems;
 				dgvDataItems.Enabled = true;
+
+				btnAddDataItem.Enabled = true;
+				btnDeleteDataItem.Enabled = true;
 			}
 
 			base.Refresh();
@@ -54,7 +60,7 @@ namespace Xanatos.Editor
 			DataGridBindingSource.Add(Activator.CreateInstance(DataType));
 		}
 
-		private void btnDelete_Click(object sender, EventArgs e)
+		private void btnDeleteDataItem_Click(object sender, EventArgs e)
 		{
 			if (DataGridBindingSource.Current != null) {
 				DataGridBindingSource.Remove(DataGridBindingSource.Current);

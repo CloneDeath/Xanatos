@@ -28,9 +28,9 @@ namespace Xanatos.Editor
 
 		public override void Refresh()
 		{
-			cbDataItemType.Items.Clear();
 			if (Game == null) {
 				cbDataItemType.Enabled = false;
+
 			} else {
 				cbDataItemType.Enabled = true;
 
@@ -41,9 +41,9 @@ namespace Xanatos.Editor
 				cbDataItemType.DisplayMember = "Name";
 				cbDataItemType.ValueMember = "Value";
 				cbDataItemType.DataSource = cbValues;
-				
 			}
 
+			uiDataItemsEditor.Refresh();
 			base.Refresh();
 		}
 

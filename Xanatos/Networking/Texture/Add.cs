@@ -19,7 +19,7 @@ namespace Xanatos.Networking.Texture
 
 		protected override void ExecuteMessage()
 		{
-			GLImp.Texture tex = new GLImp.Texture(GLImp.GraphicsManager.GetError(), TextureName, 0, 0, false);
+			GLImp.Texture tex = new GLImp.Texture(GLImp.GraphicsManager.GetError(), false);
 			TextureManager.Textures[TextureName] = tex;
 		}
 	}

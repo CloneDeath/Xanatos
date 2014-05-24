@@ -55,7 +55,7 @@ namespace Xanatos.GameState
 			Gameview.Disable();
 		}
 
-		public void GameRender()
+		public void GameRender(FrameEventArgs e)
 		{
 			/* Terrain */
 			GameInfo.Battlefield.Draw();

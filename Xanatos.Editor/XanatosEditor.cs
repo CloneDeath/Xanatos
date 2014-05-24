@@ -7,11 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Xanatos.Data;
+using GLImp;
+using System.Diagnostics;
+using OpenTK.Graphics.OpenGL;
+using OpenTK;
 
 namespace Xanatos.Editor
 {
 	public partial class XanatosEditor : Form
 	{
+		public Camera3D Camera;
+		bool Loaded = false;
+		bool Initialized = false;
+		Stopwatch Timer;
+
 		public XanatosEditor()
 		{
 			InitializeComponent();
@@ -78,6 +87,7 @@ namespace Xanatos.Editor
 			}
 			DataEditor.Show();
 			DataEditor.Focus();
+			DataEditor.Refresh();
 		}
 
 		private void eventEditorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -107,6 +117,62 @@ namespace Xanatos.Editor
 			base.Refresh();
 		}
 
-		
+		private void XanatosEditor_Load(object sender, EventArgs e)
+		{
+			Loaded = true;
+		}
+
+		private void glControl_Paint(object sender, PaintEventArgs e)
+		{
+			if (!Loaded) return;
+			if (!Initialized) Initialize();
+
+			glControl.MakeCurrent();
+
+			Camera.Viewport = new Rectangle(0, 0, glControl.Width, glControl.Height);
+
+			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+			GL.MatrixMode(MatrixMode.Modelview);
+			GL.LoadIdentity();
+
+			double dt = Timer.Elapsed.TotalSeconds;
+			Timer.Restart();
+			Camera.Draw(new FrameEventArgs(dt));
+
+			glControl.SwapBuffers();
+		}
+
+		private void Initialize()
+		{
+			Camera = new Camera3D();
+			Camera.OnRender += OnRender;
+
+			Camera.Position = new Vector3d(1, 0, 1);
+			Camera.LookAt(0, 0, 0);
+
+			Timer = new Stopwatch();
+			Timer.Start();
+
+			Initialized = true;
+		}
+
+		private void OnRender(FrameEventArgs e)
+		{
+			GL.Begin(PrimitiveType.Quads);
+			{
+				GL.Color3(Color.Red);
+				GL.Vertex3(0, 0, 0);
+
+				GL.Color3(Color.Red);
+				GL.Vertex3(0, 1, 0);
+
+				GL.Color3(Color.Red);
+				GL.Vertex3(1, 1, 0);
+
+				GL.Color3(Color.Red);
+				GL.Vertex3(1, 0, 0);
+			}
+			GL.End();
+		}
 	}
 }

@@ -13,7 +13,7 @@ namespace Xanatos
 		public static bool GetMousePosition(Camera3D camera, out Vector2d position)
 		{
 			Vector2d ViewArea = new Vector2d(camera.Viewport.Width, camera.Viewport.Height);
-			Vector2d MouseAt = MouseManager.GetMousePosition() - new Vector2d(camera.Viewport.X, camera.Viewport.Y);
+			Vector2d MouseAt = MouseManager.MousePosition - new Vector2d(camera.Viewport.X, camera.Viewport.Y);
 			if (MouseAt.X < 0 || MouseAt.Y < 0 || MouseAt.X > camera.Viewport.Width || MouseAt.Y > camera.Viewport.Height) {
 				position = new Vector2d();
 				return false;

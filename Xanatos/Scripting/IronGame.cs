@@ -52,7 +52,7 @@ namespace Xanatos.Scripting
 			if (Textures.ContainsKey(name)) {
 				return new IronTexture(Textures[name]);
 			} else {
-				Texture tex = new Texture(GraphicsManager.GetError(), name, 0, 0, false);
+				Texture tex = new Texture(GraphicsManager.GetError(), false);
 				Textures[name] = tex;
 				new Networking.Texture.Add(name).Send();
 				return new IronTexture(tex);

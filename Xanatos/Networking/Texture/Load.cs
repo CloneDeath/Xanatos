@@ -10,13 +10,13 @@ namespace Xanatos.Networking.Texture
 {
 	class Load : Message
 	{
-		string Texturename;
+		//string Texturename;
 		byte[] Data;
 
 		public Load() { }
 		public Load(GLImp.Texture tex)
 		{
-			this.Texturename = tex.Name;
+			//this.Texturename = tex.Name;
 			this.Data = GetBytes(tex);
 		}
 
@@ -35,7 +35,7 @@ namespace Xanatos.Networking.Texture
 
 		protected override void ExecuteMessage()
 		{
-			TextureManager.Textures[Texturename].Image = GetBitmap(Data);
+			//TextureManager.Textures[Texturename].Image = GetBitmap(Data);
 		}
 	}
 }

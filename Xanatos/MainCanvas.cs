@@ -139,7 +139,8 @@ namespace Xanatos
 		/// </summary>
 		/// <param name="e">Contains timing information.</param>
 		/// <remarks>There is no need to call the base implementation.</remarks>
-		public static void OnUpdateFrame() {
+		public static void OnUpdateFrame(FrameEventArgs e)
+		{
 			if(Renderer.TextCacheSize > 1000) // each cached string is an allocated texture, flush the cache once in a while in your real project
 				Renderer.FlushTextCache();
 		}
@@ -149,7 +150,8 @@ namespace Xanatos
 		/// </summary>
 		/// <param name="e">Contains timing information.</param>
 		/// <remarks>There is no need to call the base implementation.</remarks>
-		public static void OnRenderFrame() {
+		public static void OnRenderFrame(FrameEventArgs e)
+		{
 			GL.Disable(EnableCap.AlphaTest);
 			canvas.RenderCanvas();
 		}

@@ -16,7 +16,7 @@ namespace Xanatos.Networking.Resource
 		public SetResourceIcon(GameState.Overworld.Resource res)
 		{
 			this.ResourceName = res.Name;
-			this.TextureName = res.ResourceIcon.Name;
+			//this.TextureName = res.ResourceIcon.Name;
 		}
 
 		protected override void ExecuteMessage()

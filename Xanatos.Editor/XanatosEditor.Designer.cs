@@ -37,11 +37,11 @@
 			this.dataEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.eventEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-			this.glControl1 = new OpenTK.GLControl();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tpMapInfo = new System.Windows.Forms.TabPage();
-			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
+			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.glControl = new OpenTK.GLControl();
 			this.msTopBar.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
@@ -136,20 +136,10 @@
 			// 
 			// splitContainer1.Panel2
 			// 
-			this.splitContainer1.Panel2.Controls.Add(this.glControl1);
+			this.splitContainer1.Panel2.Controls.Add(this.glControl);
 			this.splitContainer1.Size = new System.Drawing.Size(982, 555);
 			this.splitContainer1.SplitterDistance = 327;
 			this.splitContainer1.TabIndex = 1;
-			// 
-			// glControl1
-			// 
-			this.glControl1.BackColor = System.Drawing.Color.Black;
-			this.glControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.glControl1.Location = new System.Drawing.Point(0, 0);
-			this.glControl1.Name = "glControl1";
-			this.glControl1.Size = new System.Drawing.Size(651, 555);
-			this.glControl1.TabIndex = 0;
-			this.glControl1.VSync = false;
 			// 
 			// tabControl1
 			// 
@@ -173,16 +163,6 @@
 			this.tpMapInfo.Text = "Map Info";
 			this.tpMapInfo.UseVisualStyleBackColor = true;
 			// 
-			// tabPage2
-			// 
-			this.tabPage2.Location = new System.Drawing.Point(4, 22);
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(192, 74);
-			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "tabPage2";
-			this.tabPage2.UseVisualStyleBackColor = true;
-			// 
 			// propertyGrid1
 			// 
 			this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -190,6 +170,29 @@
 			this.propertyGrid1.Name = "propertyGrid1";
 			this.propertyGrid1.Size = new System.Drawing.Size(313, 523);
 			this.propertyGrid1.TabIndex = 0;
+			// 
+			// tabPage2
+			// 
+			this.tabPage2.Location = new System.Drawing.Point(4, 22);
+			this.tabPage2.Name = "tabPage2";
+			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage2.Size = new System.Drawing.Size(319, 529);
+			this.tabPage2.TabIndex = 1;
+			this.tabPage2.Text = "tabPage2";
+			this.tabPage2.UseVisualStyleBackColor = true;
+			// 
+			// glControl
+			// 
+			this.glControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+						| System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
+			this.glControl.BackColor = System.Drawing.Color.Black;
+			this.glControl.Location = new System.Drawing.Point(0, 0);
+			this.glControl.Name = "glControl";
+			this.glControl.Size = new System.Drawing.Size(651, 555);
+			this.glControl.TabIndex = 0;
+			this.glControl.VSync = false;
+			this.glControl.Paint += new System.Windows.Forms.PaintEventHandler(this.glControl_Paint);
 			// 
 			// XanatosEditor
 			// 
@@ -202,6 +205,7 @@
 			this.Name = "XanatosEditor";
 			this.Text = "Xanatos Editor";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+			this.Load += new System.EventHandler(this.XanatosEditor_Load);
 			this.msTopBar.ResumeLayout(false);
 			this.msTopBar.PerformLayout();
 			this.splitContainer1.Panel1.ResumeLayout(false);
@@ -227,7 +231,7 @@
 		private System.Windows.Forms.ToolStripMenuItem eventEditorToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
 		private System.Windows.Forms.SplitContainer splitContainer1;
-		private OpenTK.GLControl glControl1;
+		private OpenTK.GLControl glControl;
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage tpMapInfo;
 		private System.Windows.Forms.TabPage tabPage2;

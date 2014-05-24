@@ -8,6 +8,7 @@ using Gwen.Control;
 using System.Diagnostics;
 using Lidgren.Network;
 using Lidgren.Messages;
+using OpenTK;
 
 namespace Xanatos
 {
@@ -28,7 +29,6 @@ namespace Xanatos
 			GraphicsManager.SetBackground(Color.Black);
 
 			GraphicsManager.Update += GraphicsManager_Update;
-			GraphicsManager.Update += Message.Update;
 
 			//Draw2D
 			Camera2D = new Camera2D();
@@ -54,16 +54,17 @@ namespace Xanatos
 			CurrentState = newstate;
 		}
 
-		static void GraphicsManager_Update()
+		static void GraphicsManager_Update(FrameEventArgs e)
 		{
 			float dt = UpdateTime.ElapsedMilliseconds / 1000f;
 			UpdateTime.Restart();
 
+			Message.Update();
 			CurrentState.Update(dt);
 		}
 
 
-		static void Draw2D()
+		static void Draw2D(FrameEventArgs e)
 		{
 			float dt = DrawTime.ElapsedMilliseconds / 1000f;
 			DrawTime.Restart();

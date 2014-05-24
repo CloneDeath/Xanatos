@@ -16,7 +16,7 @@ namespace Xanatos.Networking.Entity
 		public SetWorldTexture(GameState.Overworld.Entity ent)
 		{
 			this.EntityName = ent.Name;
-			this.TextureName = ent.WorldTexture.Name;
+			//this.TextureName = ent.WorldTexture.Name;
 		}
 
 		protected override void ExecuteMessage()
