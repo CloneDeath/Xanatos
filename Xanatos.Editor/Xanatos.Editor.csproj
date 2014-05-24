@@ -94,6 +94,12 @@
     <Compile Include="EventEditorForm.Designer.cs">
       <DependentUpon>EventEditorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MapView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapView.Designer.cs">
+      <DependentUpon>MapView.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewGameForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EventEditorForm.resx">
       <DependentUpon>EventEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapView.resx">
+      <DependentUpon>MapView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewGameForm.resx">
       <DependentUpon>NewGameForm.cs</DependentUpon>

@@ -41,7 +41,7 @@
 			this.tpMapInfo = new System.Windows.Forms.TabPage();
 			this.pgMapInfo = new System.Windows.Forms.PropertyGrid();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.glControl = new OpenTK.GLControl();
+			this.uiMapView = new Xanatos.Editor.MapView();
 			this.msTopBar.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
@@ -136,7 +136,7 @@
 			// 
 			// splitContainer1.Panel2
 			// 
-			this.splitContainer1.Panel2.Controls.Add(this.glControl);
+			this.splitContainer1.Panel2.Controls.Add(this.uiMapView);
 			this.splitContainer1.Size = new System.Drawing.Size(982, 555);
 			this.splitContainer1.SplitterDistance = 327;
 			this.splitContainer1.TabIndex = 1;
@@ -181,18 +181,14 @@
 			this.tabPage2.Text = "tabPage2";
 			this.tabPage2.UseVisualStyleBackColor = true;
 			// 
-			// glControl
+			// uiMapView
 			// 
-			this.glControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-						| System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
-			this.glControl.BackColor = System.Drawing.Color.Black;
-			this.glControl.Location = new System.Drawing.Point(0, 0);
-			this.glControl.Name = "glControl";
-			this.glControl.Size = new System.Drawing.Size(651, 555);
-			this.glControl.TabIndex = 0;
-			this.glControl.VSync = false;
-			this.glControl.Paint += new System.Windows.Forms.PaintEventHandler(this.glControl_Paint);
+			this.uiMapView.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.uiMapView.Game = null;
+			this.uiMapView.Location = new System.Drawing.Point(0, 0);
+			this.uiMapView.Name = "uiMapView";
+			this.uiMapView.Size = new System.Drawing.Size(651, 555);
+			this.uiMapView.TabIndex = 0;
 			// 
 			// XanatosEditor
 			// 
@@ -205,7 +201,6 @@
 			this.Name = "XanatosEditor";
 			this.Text = "Xanatos Editor";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-			this.Load += new System.EventHandler(this.XanatosEditor_Load);
 			this.msTopBar.ResumeLayout(false);
 			this.msTopBar.PerformLayout();
 			this.splitContainer1.Panel1.ResumeLayout(false);
@@ -231,11 +226,11 @@
 		private System.Windows.Forms.ToolStripMenuItem eventEditorToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
 		private System.Windows.Forms.SplitContainer splitContainer1;
-		private OpenTK.GLControl glControl;
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage tpMapInfo;
 		private System.Windows.Forms.TabPage tabPage2;
 		private System.Windows.Forms.PropertyGrid pgMapInfo;
+		private MapView uiMapView;
 	}
 }
 
