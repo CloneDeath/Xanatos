@@ -19,6 +19,9 @@ namespace Xanatos.Data
 		[DataMember]
 		public List<Resource> Resources = new List<Resource>();
 
+		[DataMember]
+		public List<Tile> Tiles = new List<Tile>();
+
 		[IgnoreDataMember]
 		private static DataContractSerializer serializer = new DataContractSerializer(typeof(BaseGame),
 				new List<Type>() {

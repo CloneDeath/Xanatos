@@ -109,11 +109,11 @@ namespace Xanatos.Editor
 			uiMapView.Refresh();
 
 			if (EventEditor != null) {
-				DataEditor.Game = this.Game;
 				EventEditor.Refresh();
 			}
 
 			if (DataEditor != null) {
+				DataEditor.Game = this.Game;
 				DataEditor.Refresh();
 			}
 

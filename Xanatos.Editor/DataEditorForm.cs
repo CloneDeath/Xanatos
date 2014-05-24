@@ -37,6 +37,7 @@ namespace Xanatos.Editor
 				var cbValues = new[] {
 					new { Name = "Units", Value = (IList)Game.Units },
 					new { Name = "Resources", Value = (IList)Game.Resources },
+					new { Name = "Tiles", Value = (IList)Game.Tiles },
 				};
 				cbDataItemType.DisplayMember = "Name";
 				cbDataItemType.ValueMember = "Value";

@@ -24,17 +24,8 @@ namespace Xanatos.Editor
 		}
 
 		private BindingSource DataGridBindingSource;
-		public IList DataItems
-		{
-			get;
-			set;
-		}
-
-		public Type DataType
-		{
-			get;
-			set;
-		}
+		public IList DataItems { get; set; } 
+		public Type DataType { get; set; }
 
 		public override void Refresh()
 		{
@@ -46,6 +37,7 @@ namespace Xanatos.Editor
 				btnDeleteDataItem.Enabled = false;
 			} else {
 				DataGridBindingSource.DataSource = DataItems;
+				DataGridBindingSource.Filter = "Type =" + DataType.Name;
 				dgvDataItems.Enabled = true;
 
 				btnAddDataItem.Enabled = true;
