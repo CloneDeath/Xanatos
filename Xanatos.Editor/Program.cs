@@ -4,6 +4,8 @@ using System.Linq;
 using System.Windows.Forms;
 using Xanatos.Data;
 using System.ComponentModel;
+using System.Threading;
+using GLImp;
 
 namespace Xanatos.Editor
 {

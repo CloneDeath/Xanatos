@@ -157,6 +157,10 @@
       <Project>{89D51644-4237-44B4-A266-9E277EBA265F}</Project>
       <Name>Xanatos.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Xanatos.Game\Xanatos.Game.csproj">
+      <Project>{54BA57A3-7295-4196-A938-0736F439433E}</Project>
+      <Name>Xanatos.Game</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

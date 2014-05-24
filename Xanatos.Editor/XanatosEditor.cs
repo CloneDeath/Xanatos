@@ -11,28 +11,35 @@ using GLImp;
 using System.Diagnostics;
 using OpenTK.Graphics.OpenGL;
 using OpenTK;
+using Xanatos.Game;
 
 namespace Xanatos.Editor
 {
 	public partial class XanatosEditor : Form
 	{
-		public Camera3D Camera;
+		GameRenderer Renderer;
 		bool Loaded = false;
 		bool Initialized = false;
 		Stopwatch Timer;
+		System.Timers.Timer _repaint;
 
 		public XanatosEditor()
 		{
 			InitializeComponent();
 			Refresh();
+
+			_repaint = new System.Timers.Timer(1000.0 / 60.0);
+			_repaint.Elapsed += new System.Timers.ElapsedEventHandler(_repaint_Elapsed);
+			_repaint.Start();			
+		}
+
+		void _repaint_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+		{
+			glControl.Invalidate();
 		}
 
 		public string FileLocation = null;
-		public BaseGame Game
-		{
-			get;
-			set;
-		}
+		public BaseGame Game { get; set; }
 
 		public DataEditorForm DataEditor;
 		public EventEditorForm EventEditor;
@@ -105,6 +112,10 @@ namespace Xanatos.Editor
 				saveToolStripMenuItem.Enabled = false;
 
 				pgMapInfo.SelectedObject = null;
+
+				if (Renderer != null) {
+					Renderer.Map = null;
+				}
 			} else {
 				if (FileLocation == null) {
 					saveToolStripMenuItem.Enabled = false;
@@ -114,6 +125,10 @@ namespace Xanatos.Editor
 				saveAsToolStripMenuItem.Enabled = true;
 
 				pgMapInfo.SelectedObject = Game.MapInformation;
+
+				if (Renderer != null) {
+					Renderer.Map = Game.MapInformation;
+				}
 			}
 
 			if (EventEditor != null) {
@@ -139,7 +154,7 @@ namespace Xanatos.Editor
 
 			glControl.MakeCurrent();
 
-			Camera.Viewport = new Rectangle(0, 0, glControl.Width, glControl.Height);
+			Renderer.Camera.Viewport = new Rectangle(0, 0, glControl.Width, glControl.Height);
 
 			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 			GL.MatrixMode(MatrixMode.Modelview);
@@ -147,42 +162,22 @@ namespace Xanatos.Editor
 
 			double dt = Timer.Elapsed.TotalSeconds;
 			Timer.Restart();
-			Camera.Draw(new FrameEventArgs(dt));
+			Renderer.Camera.Draw(new FrameEventArgs(dt));
 
 			glControl.SwapBuffers();
 		}
 
 		private void Initialize()
 		{
-			Camera = new Camera3D();
-			Camera.OnRender += OnRender;
+			Renderer = new GameRenderer();
 
-			Camera.Position = new Vector3d(1, 0, 1);
-			Camera.LookAt(0, 0, 0);
+			Renderer.Camera.Position = new Vector3d(0, -5, 5);
+			Renderer.Camera.LookAt(0, 0, 0);
 
 			Timer = new Stopwatch();
 			Timer.Start();
 
 			Initialized = true;
-		}
-
-		private void OnRender(FrameEventArgs e)
-		{
-			GL.Begin(PrimitiveType.Quads);
-			{
-				GL.Color3(Color.Red);
-				GL.Vertex3(0, 0, 0);
-
-				GL.Color3(Color.Red);
-				GL.Vertex3(0, 1, 0);
-
-				GL.Color3(Color.Red);
-				GL.Vertex3(1, 1, 0);
-
-				GL.Color3(Color.Red);
-				GL.Vertex3(1, 0, 0);
-			}
-			GL.End();
 		}
 	}
 }
