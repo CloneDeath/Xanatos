@@ -49,9 +49,13 @@ namespace Xanatos.Editor
 
 		private void cbDataItemType_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			List<DataItem> temp = new List<DataItem>();
-			uiDataItemsEditor.DataItems = (IList)cbDataItemType.SelectedValue;
-			uiDataItemsEditor.DataType = cbDataItemType.SelectedValue.GetType().GetGenericArguments()[0];
+			if (cbDataItemType.SelectedValue == null){
+				uiDataItemsEditor.DataItems = null;
+				uiDataItemsEditor.DataType = null;
+			} else {
+				uiDataItemsEditor.DataItems = (IList)cbDataItemType.SelectedValue;
+				uiDataItemsEditor.DataType = cbDataItemType.SelectedValue.GetType().GetGenericArguments()[0];
+			}
 			uiDataItemsEditor.Refresh();
 		}
 	}

@@ -57,7 +57,7 @@ namespace Xanatos.Editor
 		private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			SaveFileDialog sfd = new SaveFileDialog();
-			sfd.Filter = "Xanatos Game (.xan)|*.xan";
+			sfd.Filter = "Xanatos Game (*.xan)|*.xan";
 			if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
 				FileLocation = sfd.FileName;
 				Game.Save(FileLocation);
@@ -69,7 +69,7 @@ namespace Xanatos.Editor
 		private void loadToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
-			ofd.Filter = "Xanatos Game (.xan)|*.xan";
+			ofd.Filter = "Xanatos Game (*.xan)|*.xan";
 			if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
 				FileLocation = ofd.FileName;
 				Game = BaseGame.Load(FileLocation);
@@ -112,6 +112,13 @@ namespace Xanatos.Editor
 				}
 
 				saveAsToolStripMenuItem.Enabled = true;
+			}
+
+			if (EventEditor != null) {
+				EventEditor.Refresh();
+			}
+			if (DataEditor != null) {
+				DataEditor.Refresh();
 			}
 
 			base.Refresh();

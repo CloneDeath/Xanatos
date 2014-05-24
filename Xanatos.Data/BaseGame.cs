@@ -10,12 +10,14 @@ namespace Xanatos.Data
 	[DataContract]
 	public class BaseGame
 	{
+		[DataMember]
 		public string Name;
 
+		[DataMember]
 		public List<Unit> Units = new List<Unit>();
+
+		[DataMember]
 		public List<Resource> Resources = new List<Resource>();
-
-
 
 		[IgnoreDataMember]
 		private static DataContractSerializer serializer = new DataContractSerializer(typeof(BaseGame),
