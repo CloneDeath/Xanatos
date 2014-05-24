@@ -43,7 +43,11 @@
 			// 
 			// uiDataItemsEditor
 			// 
+			this.uiDataItemsEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+						| System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this.uiDataItemsEditor.DataItems = null;
+			this.uiDataItemsEditor.DataType = null;
 			this.uiDataItemsEditor.Location = new System.Drawing.Point(12, 39);
 			this.uiDataItemsEditor.Name = "uiDataItemsEditor";
 			this.uiDataItemsEditor.Size = new System.Drawing.Size(780, 482);

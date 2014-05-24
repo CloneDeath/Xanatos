@@ -27,7 +27,7 @@ namespace Xanatos.Editor
 
 		private void btnOK_Click(object sender, EventArgs e)
 		{
-			Game.Name = tbName.Text;
+			Game.MapInformation.Name = tbName.Text;
 
 			this.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.Close();

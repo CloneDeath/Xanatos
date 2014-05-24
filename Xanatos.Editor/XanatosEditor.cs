@@ -83,7 +83,6 @@ namespace Xanatos.Editor
 			if (DataEditor == null || DataEditor.IsDisposed) {
 				DataEditor = new DataEditorForm();
 				DataEditor.Game = this.Game;
-				DataEditor.Refresh();
 			}
 			DataEditor.Show();
 			DataEditor.Focus();
@@ -104,17 +103,21 @@ namespace Xanatos.Editor
 			if (Game == null) {
 				saveAsToolStripMenuItem.Enabled = false;
 				saveToolStripMenuItem.Enabled = false;
+
+				pgMapInfo.SelectedObject = null;
 			} else {
 				if (FileLocation == null) {
 					saveToolStripMenuItem.Enabled = false;
 				} else {
 					saveToolStripMenuItem.Enabled = true;
 				}
-
 				saveAsToolStripMenuItem.Enabled = true;
+
+				pgMapInfo.SelectedObject = Game.MapInformation;
 			}
 
 			if (EventEditor != null) {
+				DataEditor.Game = this.Game;
 				EventEditor.Refresh();
 			}
 			if (DataEditor != null) {

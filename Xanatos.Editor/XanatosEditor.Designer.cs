@@ -39,7 +39,7 @@
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tpMapInfo = new System.Windows.Forms.TabPage();
-			this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
+			this.pgMapInfo = new System.Windows.Forms.PropertyGrid();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.glControl = new OpenTK.GLControl();
 			this.msTopBar.SuspendLayout();
@@ -154,7 +154,7 @@
 			// 
 			// tpMapInfo
 			// 
-			this.tpMapInfo.Controls.Add(this.propertyGrid1);
+			this.tpMapInfo.Controls.Add(this.pgMapInfo);
 			this.tpMapInfo.Location = new System.Drawing.Point(4, 22);
 			this.tpMapInfo.Name = "tpMapInfo";
 			this.tpMapInfo.Padding = new System.Windows.Forms.Padding(3);
@@ -163,13 +163,13 @@
 			this.tpMapInfo.Text = "Map Info";
 			this.tpMapInfo.UseVisualStyleBackColor = true;
 			// 
-			// propertyGrid1
+			// pgMapInfo
 			// 
-			this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.propertyGrid1.Location = new System.Drawing.Point(3, 3);
-			this.propertyGrid1.Name = "propertyGrid1";
-			this.propertyGrid1.Size = new System.Drawing.Size(313, 523);
-			this.propertyGrid1.TabIndex = 0;
+			this.pgMapInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pgMapInfo.Location = new System.Drawing.Point(3, 3);
+			this.pgMapInfo.Name = "pgMapInfo";
+			this.pgMapInfo.Size = new System.Drawing.Size(313, 523);
+			this.pgMapInfo.TabIndex = 0;
 			// 
 			// tabPage2
 			// 
@@ -235,7 +235,7 @@
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage tpMapInfo;
 		private System.Windows.Forms.TabPage tabPage2;
-		private System.Windows.Forms.PropertyGrid propertyGrid1;
+		private System.Windows.Forms.PropertyGrid pgMapInfo;
 	}
 }
 

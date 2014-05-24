@@ -11,7 +11,7 @@ namespace Xanatos.Data
 	public class BaseGame
 	{
 		[DataMember]
-		public string Name;
+		public MapInfo MapInformation = new MapInfo();
 
 		[DataMember]
 		public List<Unit> Units = new List<Unit>();
