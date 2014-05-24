@@ -51,7 +51,7 @@
 			// 
 			this.dgvDataItems.AllowUserToAddRows = false;
 			this.dgvDataItems.AllowUserToDeleteRows = false;
-			this.dgvDataItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+			this.dgvDataItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.dgvDataItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvDataItems.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dgvDataItems.Location = new System.Drawing.Point(0, 0);
@@ -92,10 +92,10 @@
 			this.btnAddDataItem.UseVisualStyleBackColor = true;
 			this.btnAddDataItem.Click += new System.EventHandler(this.btnAddDataItem_Click);
 			// 
-			// btnDelete
+			// btnDeleteDataItem
 			// 
 			this.btnDeleteDataItem.Location = new System.Drawing.Point(219, 3);
-			this.btnDeleteDataItem.Name = "btnDelete";
+			this.btnDeleteDataItem.Name = "btnDeleteDataItem";
 			this.btnDeleteDataItem.Size = new System.Drawing.Size(75, 23);
 			this.btnDeleteDataItem.TabIndex = 4;
 			this.btnDeleteDataItem.Text = "Delete";

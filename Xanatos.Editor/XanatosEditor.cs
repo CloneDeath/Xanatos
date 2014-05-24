@@ -119,5 +119,20 @@ namespace Xanatos.Editor
 
 			base.Refresh();
 		}
+
+		private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+
+		protected override void OnClosing(CancelEventArgs e)
+		{
+			e.Cancel = true;
+			if (MessageBox.Show("Are you sure you wish to quit?", "Confirmation", MessageBoxButtons.YesNoCancel) == System.Windows.Forms.DialogResult.Yes) {
+				e.Cancel = false;
+			}
+			
+			base.OnClosing(e);
+		}
 	}
 }
