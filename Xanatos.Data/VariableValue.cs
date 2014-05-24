@@ -7,6 +7,16 @@ namespace Xanatos.Data
 {
 	public class VariableValue
 	{
-		public object Value;
+		public VariableValue()
+		{
+			Value = 0;
+		}
+
+		public object Value { get; set; }
+
+		public override string ToString()
+		{
+			return Value.ToString();
+		}
 	}
 }

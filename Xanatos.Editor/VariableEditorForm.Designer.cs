@@ -31,12 +31,16 @@
 			this.btnOK = new System.Windows.Forms.Button();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tpPrimitive = new System.Windows.Forms.TabPage();
-			this.rbString = new System.Windows.Forms.RadioButton();
-			this.rbInteger = new System.Windows.Forms.RadioButton();
+			this.tbString = new System.Windows.Forms.TextBox();
 			this.rbDouble = new System.Windows.Forms.RadioButton();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.rbInteger = new System.Windows.Forms.RadioButton();
+			this.rbString = new System.Windows.Forms.RadioButton();
+			this.nudInteger = new System.Windows.Forms.NumericUpDown();
+			this.nudDouble = new System.Windows.Forms.NumericUpDown();
 			this.tabControl1.SuspendLayout();
 			this.tpPrimitive.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudInteger)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.nudDouble)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// btnCancel
@@ -76,7 +80,9 @@
 			// 
 			// tpPrimitive
 			// 
-			this.tpPrimitive.Controls.Add(this.textBox1);
+			this.tpPrimitive.Controls.Add(this.nudDouble);
+			this.tpPrimitive.Controls.Add(this.nudInteger);
+			this.tpPrimitive.Controls.Add(this.tbString);
 			this.tpPrimitive.Controls.Add(this.rbDouble);
 			this.tpPrimitive.Controls.Add(this.rbInteger);
 			this.tpPrimitive.Controls.Add(this.rbString);
@@ -88,45 +94,65 @@
 			this.tpPrimitive.Text = "Primitive Type";
 			this.tpPrimitive.UseVisualStyleBackColor = true;
 			// 
-			// rbString
+			// tbString
 			// 
-			this.rbString.AutoSize = true;
-			this.rbString.Location = new System.Drawing.Point(6, 6);
-			this.rbString.Name = "rbString";
-			this.rbString.Size = new System.Drawing.Size(52, 17);
-			this.rbString.TabIndex = 0;
-			this.rbString.TabStop = true;
-			this.rbString.Text = "String";
-			this.rbString.UseVisualStyleBackColor = true;
-			// 
-			// rbInteger
-			// 
-			this.rbInteger.AutoSize = true;
-			this.rbInteger.Location = new System.Drawing.Point(7, 30);
-			this.rbInteger.Name = "rbInteger";
-			this.rbInteger.Size = new System.Drawing.Size(58, 17);
-			this.rbInteger.TabIndex = 1;
-			this.rbInteger.TabStop = true;
-			this.rbInteger.Text = "Integer";
-			this.rbInteger.UseVisualStyleBackColor = true;
+			this.tbString.Location = new System.Drawing.Point(73, 6);
+			this.tbString.Name = "tbString";
+			this.tbString.Size = new System.Drawing.Size(191, 20);
+			this.tbString.TabIndex = 3;
+			this.tbString.TextChanged += new System.EventHandler(this.tbString_TextChanged);
 			// 
 			// rbDouble
 			// 
 			this.rbDouble.AutoSize = true;
-			this.rbDouble.Location = new System.Drawing.Point(7, 54);
+			this.rbDouble.Location = new System.Drawing.Point(6, 58);
 			this.rbDouble.Name = "rbDouble";
 			this.rbDouble.Size = new System.Drawing.Size(59, 17);
 			this.rbDouble.TabIndex = 2;
 			this.rbDouble.TabStop = true;
 			this.rbDouble.Text = "Double";
 			this.rbDouble.UseVisualStyleBackColor = true;
+			this.rbDouble.CheckedChanged += new System.EventHandler(this.rbDouble_CheckedChanged);
 			// 
-			// textBox1
+			// rbInteger
 			// 
-			this.textBox1.Location = new System.Drawing.Point(73, 6);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(191, 20);
-			this.textBox1.TabIndex = 3;
+			this.rbInteger.AutoSize = true;
+			this.rbInteger.Location = new System.Drawing.Point(6, 32);
+			this.rbInteger.Name = "rbInteger";
+			this.rbInteger.Size = new System.Drawing.Size(58, 17);
+			this.rbInteger.TabIndex = 1;
+			this.rbInteger.TabStop = true;
+			this.rbInteger.Text = "Integer";
+			this.rbInteger.UseVisualStyleBackColor = true;
+			this.rbInteger.CheckedChanged += new System.EventHandler(this.rbInteger_CheckedChanged);
+			// 
+			// rbString
+			// 
+			this.rbString.AutoSize = true;
+			this.rbString.Location = new System.Drawing.Point(6, 7);
+			this.rbString.Name = "rbString";
+			this.rbString.Size = new System.Drawing.Size(52, 17);
+			this.rbString.TabIndex = 0;
+			this.rbString.TabStop = true;
+			this.rbString.Text = "String";
+			this.rbString.UseVisualStyleBackColor = true;
+			this.rbString.CheckedChanged += new System.EventHandler(this.rbString_CheckedChanged);
+			// 
+			// nudInteger
+			// 
+			this.nudInteger.Location = new System.Drawing.Point(73, 32);
+			this.nudInteger.Name = "nudInteger";
+			this.nudInteger.Size = new System.Drawing.Size(191, 20);
+			this.nudInteger.TabIndex = 4;
+			this.nudInteger.ValueChanged += new System.EventHandler(this.nudInteger_ValueChanged);
+			// 
+			// nudDouble
+			// 
+			this.nudDouble.Location = new System.Drawing.Point(73, 58);
+			this.nudDouble.Name = "nudDouble";
+			this.nudDouble.Size = new System.Drawing.Size(191, 20);
+			this.nudDouble.TabIndex = 5;
+			this.nudDouble.ValueChanged += new System.EventHandler(this.nudDouble_ValueChanged);
 			// 
 			// VariableEditorForm
 			// 
@@ -143,6 +169,8 @@
 			this.tabControl1.ResumeLayout(false);
 			this.tpPrimitive.ResumeLayout(false);
 			this.tpPrimitive.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudInteger)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.nudDouble)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -153,9 +181,11 @@
 		private System.Windows.Forms.Button btnOK;
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage tpPrimitive;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox tbString;
 		private System.Windows.Forms.RadioButton rbDouble;
 		private System.Windows.Forms.RadioButton rbInteger;
 		private System.Windows.Forms.RadioButton rbString;
+		private System.Windows.Forms.NumericUpDown nudDouble;
+		private System.Windows.Forms.NumericUpDown nudInteger;
 	}
 }

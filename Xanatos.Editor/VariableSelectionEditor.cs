@@ -21,6 +21,7 @@ namespace Xanatos.Editor
 			if (value is VariableValue) {
 				VariableEditorForm vef = new VariableEditorForm();
 				vef.Value = value as VariableValue;
+				vef.Refresh();
 				if (vef.ShowDialog() == DialogResult.OK) {
 					return vef.Value;
 				} else {
