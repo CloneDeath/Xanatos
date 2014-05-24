@@ -89,5 +89,32 @@ namespace Xanatos.Editor
 
 			Initialized = true;
 		}
+
+		Point PreviousPosition = new Point(0, 0);
+
+		private void glControl_MouseMove(object sender, MouseEventArgs e)
+		{
+			if (e.Button == System.Windows.Forms.MouseButtons.Middle) {
+				double dx = (e.X - PreviousPosition.X) * 0.02;
+				double dy = (e.Y - PreviousPosition.Y) * 0.02;
+
+				Renderer.Camera.Position.X -= dx;
+				Renderer.Camera.Position.Y += dy;
+
+				Renderer.Camera.LookAt(Renderer.Camera.Position + new Vector3d(0, 5, -5));
+
+				PreviousPosition = e.Location;
+			}
+		}
+
+		
+		private void glControl_MouseDown(object sender, MouseEventArgs e)
+		{
+			if (e.Button == System.Windows.Forms.MouseButtons.Middle) {
+				PreviousPosition = e.Location;
+
+				this.glControl_MouseMove(sender, e);
+			}
+		}
 	}
 }

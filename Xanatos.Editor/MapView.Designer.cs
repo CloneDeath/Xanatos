@@ -40,6 +40,8 @@
 			this.glControl.TabIndex = 1;
 			this.glControl.VSync = false;
 			this.glControl.Paint += new System.Windows.Forms.PaintEventHandler(this.glControl_Paint);
+			this.glControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.glControl_MouseDown);
+			this.glControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.glControl_MouseMove);
 			// 
 			// MapView
 			// 
